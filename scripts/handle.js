@@ -31,7 +31,7 @@ Army list data files for ${game}, made by the community.
 
 ## Content rules
 
-Data files hold facts: unit and option names, points, stat values, keywords, army building limits, page references. Never add rules, ability, spell or card text copied from books, cards, apps or websites (even retyped or lightly reworded), scans or screenshots, artwork or logos. Content reported by a rights holder is removed.
+Data files hold facts: unit and option names, points, stat values, keywords, army building limits, page references. Without the rights holder's permission, never add rules, ability, spell or card text copied from books, cards, apps or websites (even retyped or lightly reworded), scans or screenshots, artwork or logos. Content reported by a rights holder is removed.
 
 ## How to contribute
 

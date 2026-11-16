@@ -20,13 +20,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        ### No copyrighted content
+        ### No copyrighted content without permission
         Data files may hold facts: unit and option names, points, stat values, keywords, army building limits, page references.
-        Do **not** upload:
+        Unless the rights holder has given permission, do **not** upload:
         - rules, ability, spell or card text copied from books, cards, apps or websites, even retyped or lightly reworded
         - scans, photos or screenshots of books or cards
         - artwork, logos or faction symbols
-        - any data for Games Workshop games (Warhammer 40,000, Age of Sigmar, Horus Heresy, The Old World, Kill Team, Necromunda, Blood Bowl, Middle-earth and others)
+
+        Games Workshop has not given permission, so no data at all for its games (Warhammer 40,000, Age of Sigmar, Horus Heresy, The Old World, Kill Team, Necromunda, Blood Bowl, Middle-earth and others).
 
         Content reported by a rights holder is removed.
   - type: checkboxes
@@ -34,5 +35,5 @@ body:
     attributes:
       label: Content rules
       options:
-        - label: This repository will not contain copyrighted content as described above.
+        - label: This repository will not contain copyrighted content without the rights holder's permission, as described above.
           required: true
