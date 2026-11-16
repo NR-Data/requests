@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NR-Data Requests</title>
+<meta name="description" content="Community-made army list data for tabletop games: browse the repositories, join one or start a new one.">
+<style>
+  :root {
+    --bg: #f7f7f5; --surface: #ffffff; --text: #1d1d1b; --muted: #62625d; --line: #deded8;
+    --accent: #2457c5; --accent-text: #ffffff; --accent-press: #1b4396; --warn-bg: #fff6e0; --warn-line: #e8c46a;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #151514; --surface: #1f1f1d; --text: #ececea; --muted: #a3a39d; --line: #34342f;
+      --accent: #6d97ff; --accent-text: #0d1426; --accent-press: #4f7be6; --warn-bg: #2b2414; --warn-line: #6b5520; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 32px 0 12px; }
+  p { margin: 0 0 12px; max-width: 70ch; }
+  a { color: var(--accent); }
+  .lead { color: var(--muted); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .rules { background: var(--warn-bg); border-color: var(--warn-line); }
+  .rules ul { margin: 8px 0 8px; padding-left: 20px; }
+  .rules li { margin: 2px 0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+  .btn:active { transform: translateY(1px); background: var(--line); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+  .btn.primary:active { background: var(--accent-press); }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+  input[type=text], input[type=search] { width: 100%; min-height: 44px; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--text); font: inherit; }
+  label.field { display: block; font-weight: 600; margin: 12px 0 4px; }
+  .check { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0; min-height: 44px; }
+  .check input { width: 20px; height: 20px; margin-top: 2px; flex: none; }
+  .list { list-style: none; margin: 12px 0 0; padding: 0 16px; min-height: 240px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+  .row:first-child { border-top: 0; }
+  .row .info { flex: 1 1 150px; min-width: 0; }
+  .row .name { font-weight: 600; overflow-wrap: anywhere; }
+  .row .head { color: var(--muted); font-size: .9rem; }
+  .row .actions { display: flex; gap: 8px; }
+  .status { color: var(--muted); padding: 12px 0; }
+  .grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-top: 12px; }
+  ol.how { padding-left: 20px; max-width: 70ch; }
+  @media (prefers-reduced-motion: reduce) { .btn:active { transform: none; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>NR-Data</h1>
+  <p class="lead">Community-made army list data for tabletop games. The files are made by their contributors, not by NewRecruit or by any game publisher, and nobody here is affiliated with or endorsed by those publishers.</p>
+
+  <p>Before adding anything, read the <a href="#rules-title">content rules</a>.</p>
+  <nav class="grid" aria-label="Sections">
+    <a class="btn" href="#rules-title">New repository</a>
+    <a class="btn" href="#other">Other requests</a>
+  </nav>
+
+  <h2 id="repos-title">Repositories</h2>
+  <input type="search" id="filter" placeholder="Filter by name" aria-labelledby="repos-title">
+  <ul class="list card" id="repos" aria-live="polite"><li class="status" id="status">Loading repositories...</li></ul>
+
+  <section class="card rules" style="margin-top:32px" aria-labelledby="rules-title">
+    <h2 id="rules-title" style="margin-top:0">No copyrighted content</h2>
+    <p>Data files may hold facts: unit and option names, points, stat values, keywords, army building limits, page references. Do not upload:</p>
+    <ul>
+      <li>rules, ability, spell or card text copied from books, cards, apps or websites, even retyped or lightly reworded</li>
+      <li>scans, photos or screenshots of books or cards</li>
+      <li>artwork, logos or faction symbols</li>
+      <li>any data for Games Workshop games (Warhammer 40,000, Age of Sigmar, Horus Heresy, The Old World, Kill Team, Necromunda, Blood Bowl, Middle-earth and others)</li>
+    </ul>
+    <p style="margin:0">Content reported by a rights holder is removed. To report something, use <a href="#" data-template="takedown" id="takedown-link">a removal request</a>.</p>
+  </section>
+
+  <h2>Start a new repository</h2>
+  <form class="card" id="create">
+    <label class="field" for="c-repo">Repository name</label>
+    <input type="text" id="c-repo" required pattern="[A-Za-z0-9][A-Za-z0-9._\-]{0,99}" placeholder="my-game-2nd-edition" autocomplete="off">
+    <label class="field" for="c-game">Game</label>
+    <input type="text" id="c-game" required placeholder="My Game (2nd Edition)" autocomplete="off">
+    <label class="check"><input type="checkbox" id="c-ok" required><span>This repository will not contain copyrighted content as described above.</span></label>
+    <button class="btn primary" type="submit">Continue on GitHub</button>
+  </form>
+
+  <h2 id="other">Other requests</h2>
+  <div class="card">
+    <label class="field" for="o-repo" style="margin-top:0">Repository name</label>
+    <input type="text" id="o-repo" placeholder="star-wars-legion" autocomplete="off">
+    <div class="grid">
+      <a class="btn" data-template="handover" href="#">Hand over (head maintainers)</a>
+      <a class="btn" data-template="leave" href="#">Leave a repository</a>
+      <a class="btn" data-template="takedown" href="#">Content removal request</a>
+    </div>
+  </div>
+
+  <h2>How it works</h2>
+  <ol class="how">
+    <li>Each button opens a filled-in request on GitHub. Click <strong>Submit new issue</strong> there; a bot handles it within a minute or two and replies on the issue.</li>
+    <li>Creating a repository makes you its head maintainer. Accounts younger than 30 days need an admin's approval.</li>
+    <li>Joining a repository is immediate when it has no head maintainer, or when its head maintainer has been inactive for 90 days. Otherwise they are asked, and the request is approved automatically after 14 days without an answer.</li>
+    <li>Anyone can also open a pull request on any repository without asking for access.</li>
+  </ol>
+  <p><a href="https://github.com/NR-Data/requests/issues">All requests</a> are public.</p>
+</main>
+<script>
+  const ORG = "NR-Data", BASE = "https://github.com/NR-Data/requests/issues/new";
+  const TITLES = { join: "Join", claim: "Claim", handover: "Hand over", leave: "Leave", takedown: "Removal", create: "Create" };
+  const requestUrl = (template, fields) => {
+    const q = new URLSearchParams({ template: template + ".yml", title: `${TITLES[template]}: ${fields.repo || ""}`, ...fields });
+    return `${BASE}?${q}`;
+  };
+
+  const list = document.getElementById("repos"), filter = document.getElementById("filter");
+  let repos = [], heads = {};
+  function render() {
+    const q = filter.value.trim().toLowerCase();
+    const shown = repos.filter((r) => r.name.toLowerCase().includes(q));
+    list.replaceChildren(...(shown.length ? shown.map(row) : [Object.assign(document.createElement("li"), { className: "status", textContent: q ? "No repository matches." : "No repositories yet." })]));
+  }
+  function row(r) {
+    const li = document.createElement("li"); li.className = "row";
+    const info = document.createElement("div"); info.className = "info";
+    const a = Object.assign(document.createElement("a"), { className: "name", href: r.html_url, textContent: r.name });
+    const head = heads[r.name];
+    const h = Object.assign(document.createElement("div"), { className: "head", textContent: head ? `Head maintainer: ${head}` : "No head maintainer" });
+    info.append(a, h);
+    const actions = document.createElement("div"); actions.className = "actions";
+    actions.append(Object.assign(document.createElement("a"), { className: "btn primary", href: requestUrl("join", { repo: r.name }), textContent: "Join" }));
+    if (!head) actions.append(Object.assign(document.createElement("a"), { className: "btn", href: requestUrl("claim", { repo: r.name }), textContent: "Claim" }));
+    li.append(info, actions);
+    return li;
+  }
+  async function load() {
+    try {
+      const [h, ...pages] = await Promise.all([
+        fetch("https://raw.githubusercontent.com/NR-Data/requests/main/maintainers.json").then((r) => (r.ok ? r.json() : {})),
+        ...[1, 2, 3].map((p) => fetch(`https://api.github.com/orgs/${ORG}/repos?per_page=100&page=${p}`).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })),
+      ]);
+      heads = h;
+      repos = pages.flat().filter((r) => r.name !== "requests" && !r.name.startsWith(".")).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+      render();
+    } catch (e) {
+      document.getElementById("status").textContent = `Could not load the repository list (${e.message}). GitHub limits anonymous requests per hour, try again later or browse github.com/${ORG}.`;
+    }
+  }
+  filter.addEventListener("input", render);
+  load();
+
+  document.getElementById("create").addEventListener("submit", (e) => {
+    e.preventDefault();
+    location.href = requestUrl("create", { repo: document.getElementById("c-repo").value.trim(), game: document.getElementById("c-game").value.trim() });
+  });
+  for (const a of document.querySelectorAll("[data-template]")) {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      location.href = requestUrl(a.dataset.template, { repo: document.getElementById("o-repo").value.trim() });
+    });
+  }
+</script>
+</body>
+</html>

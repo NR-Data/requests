@@ -1,0 +1,8 @@
+{
+  "admins": ["giloushaker"],
+  "createRequiresApproval": false,
+  "newAccountDays": 30,
+  "createsPerWeek": 2,
+  "inactiveDays": 90,
+  "approvalTimeoutDays": 14
+}

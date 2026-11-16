@@ -1,0 +1,18 @@
+name: Content removal request
+description: For rights holders, or to report copyrighted content. Handled by the organization admins.
+title: "Removal: "
+labels: [takedown]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository name
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What content, and why
+      description: Files or lines concerned, and the work they come from.
+    validations:
+      required: true

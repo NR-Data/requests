@@ -1,0 +1,11 @@
+name: Leave a repository
+description: Remove your own access. If you are the head maintainer, the repository becomes open to claim.
+title: "Leave: "
+labels: [leave]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository name
+    validations:
+      required: true

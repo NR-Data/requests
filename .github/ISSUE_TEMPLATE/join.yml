@@ -1,0 +1,16 @@
+name: Join a repository
+description: Get write access to a data repository. Asks its head maintainer if it has an active one.
+title: "Join: "
+labels: [join]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository name
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: What do you want to work on?
+      description: Optional, helps the head maintainer decide.

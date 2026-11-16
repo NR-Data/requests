@@ -1,0 +1,11 @@
+name: Become head maintainer
+description: Take over a repository that has no head maintainer, or whose head maintainer has been inactive for a long time.
+title: "Claim: "
+labels: [claim]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository name
+    validations:
+      required: true

@@ -1,0 +1,38 @@
+name: Create a repository
+description: Start a new data repository for a game. You become its head maintainer.
+title: "Create: "
+labels: [create]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository name
+      description: Letters, numbers, dots, dashes and underscores, e.g. my-game-2nd-edition
+    validations:
+      required: true
+  - type: input
+    id: game
+    attributes:
+      label: Game
+      description: Full name of the game, e.g. My Game (2nd Edition)
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        ### No copyrighted content
+        Data files may hold facts: unit and option names, points, stat values, keywords, army building limits, page references.
+        Do **not** upload:
+        - rules, ability, spell or card text copied from books, cards, apps or websites, even retyped or lightly reworded
+        - scans, photos or screenshots of books or cards
+        - artwork, logos or faction symbols
+        - any data for Games Workshop games (Warhammer 40,000, Age of Sigmar, Horus Heresy, The Old World, Kill Team, Necromunda, Blood Bowl, Middle-earth and others)
+
+        Content reported by a rights holder is removed.
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Content rules
+      options:
+        - label: This repository will not contain copyrighted content as described above.
+          required: true
